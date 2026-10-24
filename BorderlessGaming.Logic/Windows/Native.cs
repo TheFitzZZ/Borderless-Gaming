@@ -144,6 +144,10 @@ namespace BorderlessGaming.Logic.Windows
         [DllImport("user32.dll", SetLastError = true)]
         public static extern bool GetClientRect(IntPtr hWnd, ref Rect lpRect);
 
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool AdjustWindowRectEx(ref Rect lpRect, WindowStyleFlags style, bool hasMenu,
+            WindowStyleFlags extendedStyle);
+
         [DllImport("user32.dll")]
         public static extern int ClientToScreen(IntPtr hwnd, [MarshalAs(UnmanagedType.Struct)] ref POINTAPI lpPoint);
 

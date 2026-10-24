@@ -18,6 +18,7 @@ namespace BorderlessGaming.Logic.Models
         public int MadeBorderlessAttempts = 0;
         public bool Manageable = false;
         public bool NoAccess;
+        public Size OriginalClientSize = Size.Empty;
         public Rectangle OriginalLocation = new Rectangle();
         public WindowStyleFlags OriginalStyleFlagsExtended = 0;
         public WindowStyleFlags OriginalStyleFlagsStandard = 0;

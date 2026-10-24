@@ -213,6 +213,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BorderlessGaming_new.ico" />
+    <Content Include="..\Languages\Languages.zip">
+      <Link>Languages.zip</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Resources\master-glyph.png" />
     <None Include="Resources\RainwayLogo.bmp" />
   </ItemGroup>

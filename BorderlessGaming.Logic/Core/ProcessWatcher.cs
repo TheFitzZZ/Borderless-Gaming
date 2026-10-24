@@ -88,7 +88,7 @@ namespace BorderlessGaming.Logic.Core
         }
 
         /// <summary>
-        ///     remove the menu, resize the window, remove border, and maximize
+        ///     Remove window borders and align unchanged-size windows to their monitor's top edge.
         /// </summary>
         public async Task RemoveBorder(ProcessDetails pd, Favorite favDetails = null, bool overrideTimeout = false)
         {
@@ -123,7 +123,8 @@ namespace BorderlessGaming.Logic.Core
             }
 
             var pd = FromHandle(hWnd);
-            await Manipulation.MakeWindowBorderless(pd, _form, hWnd, screen.Bounds, favDetails ?? Favorite.FromWindow(pd));
+            await Manipulation.MakeWindowBorderless(pd, _form, hWnd, screen.Bounds,
+                favDetails ?? Favorite.FromWindow(pd, FavoriteSize.FullScreen));
         }
 
         /// <summary>
@@ -139,7 +140,8 @@ namespace BorderlessGaming.Logic.Core
                 task.Wait(TimeSpan.FromSeconds(10));
             }
             var pd = FromHandle(hWnd);
-            await Manipulation.MakeWindowBorderless(pd, _form, hWnd, targetFrame, favDetails ?? Favorite.FromWindow(pd));
+            await Manipulation.MakeWindowBorderless(pd, _form, hWnd, targetFrame,
+                favDetails ?? Favorite.FromWindow(pd, FavoriteSize.FullScreen));
         }
 
         /// <summary>

@@ -26,8 +26,8 @@ namespace BorderlessGaming.Logic.Models
         public FavoriteType Type { get; set; } = FavoriteType.Process;
 
         [ProtoMember(2)]
-        [DefaultValue(FavoriteSize.FullScreen)]
-        public FavoriteSize Size { get; set; } = FavoriteSize.FullScreen;
+        [DefaultValue(FavoriteSize.NoChange)]
+        public FavoriteSize Size { get; set; } = FavoriteSize.NoChange;
 
         [ProtoMember(3)]
         [DefaultValue("")]
@@ -49,8 +49,8 @@ namespace BorderlessGaming.Logic.Models
         public int OffsetB { get; set; }
 
         [ProtoMember(9)]
-        [DefaultValue(true)]
-        public bool ShouldMaximize { get; set; } = true;
+        [DefaultValue(false)]
+        public bool ShouldMaximize { get; set; }
 
         [ProtoMember(10)]
         public int PositionX { get; set; }
@@ -68,7 +68,8 @@ namespace BorderlessGaming.Logic.Models
         public bool RemoveMenus { get; set; }
 
         [ProtoMember(15)]
-        public bool TopMost { get; set; }
+        [DefaultValue(true)]
+        public bool TopMost { get; set; } = true;
 
         [ProtoMember(16)]
         public bool HideWindowsTaskbar { get; set; }
@@ -117,9 +118,14 @@ namespace BorderlessGaming.Logic.Models
                    Type == FavoriteType.Regex && Regex.IsMatch(pd.WindowTitle, SearchText);
         }
 
-        public static Favorite FromWindow(ProcessDetails pd)
+        public static Favorite FromWindow(ProcessDetails pd, FavoriteSize size = FavoriteSize.NoChange)
         {
-            return new Favorite {SearchText = pd.BinaryName};
+            return new Favorite
+            {
+                SearchText = pd.BinaryName,
+                Size = size,
+                ShouldMaximize = size == FavoriteSize.FullScreen
+            };
         }
 
         public bool IsRunning { get; set; }

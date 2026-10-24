@@ -19,7 +19,7 @@ namespace BorderlessGaming.Logic.Core
 
         private static readonly HashSet<string> CultureNames = CreateCultureNames();
 
-        private static readonly string _archiveName = "Languages.zip";
+        private static readonly string _archiveName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Languages.zip");
 
         private static Dictionary<string, Language> Languages { get; set; }
 

@@ -34,8 +34,16 @@ The project is open source under the [GNU General Public License v2.0](https://g
 
 - Build the projects and use the generated executable
 
+- Keep the generated output folder together, including `Languages.zip`. The language pack is extracted to the application's user-data folder on first launch.
+
 
 #### Usage
+This build removes the window frame, preserves the window's visible content size and horizontal position, and aligns it to the top edge of its current monitor. The outer bounds shrink by the removed frame rather than enlarging the content. It keeps the window always on top, allowing it to overlap the taskbar, without hiding the taskbar or maximizing the window.
+
+Content already larger than the monitor is not scaled or cropped; choose a smaller in-game window size if needed.
+
+New favorites use **No Size Change** and **Always On Top**, with **Auto-Maximize** off. Existing favorites that used the original default settings also adopt these defaults. Fullscreen, custom sizes, and monitor-spanning remain available as explicit options in the favorite's context menu. Use **Restore Window** to restore the original frame, bounds, and always-on-top state.
+
 [A detailed guide can be found here](https://steamcommunity.com/app/388080/discussions/0/535151589899658778/).
 
 #### Need help?

@@ -809,6 +809,10 @@ fav.PositionX.ToString()), out int favPositionX);
                     {
                         var tt = (ToolStripMenuItem)s;
                         fav.FavScreen = tt.Checked ? PRectangle.ToPRectangle(screen.Bounds) : new PRectangle();
+                        if (tt.Checked)
+                        {
+                            fav.Size = FavoriteSize.FullScreen;
+                        }
                         Config.Save();
                     };
                 }
@@ -822,6 +826,7 @@ fav.PositionX.ToString()), out int favPositionX);
                 contextFavScreen.DropDownItems[superIndex].Click += (s, ea) =>
                 {
                     fav.FavScreen = PRectangle.ToPRectangle(superSize);
+                    fav.Size = FavoriteSize.FullScreen;
                     Config.Save();
                 };
             }
